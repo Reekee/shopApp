@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SessionService } from './session/session.service';
@@ -27,7 +27,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private session: SessionService
+    private session: SessionService,
+    public alertController: AlertController
   ) {
     this.initializeApp();
   }
@@ -38,4 +39,28 @@ export class AppComponent {
       this.splashScreen.hide();
     });
   }
+  async logout() {
+    const alert = await this.alertController.create({
+      header: 'คำยืนยัน!',
+      message: 'คุณแน่ใจต้องการออกจากระบบใช่หรือไม่ ?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+
+          }
+        }, {
+          text: 'ตกลง',
+          handler: () => {
+            this.session.status = false;
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
+

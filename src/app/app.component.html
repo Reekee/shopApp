@@ -27,7 +27,7 @@
           </ion-menu-toggle>
 
           <ion-menu-toggle *ngIf="session.status==true" auto-hide="false">
-            <ion-item [routerDirection]="'root'" [routerLink]="">
+            <ion-item [routerDirection]="'root'" (click)="logout()">
               <ion-icon slot="start" name="log-out"></ion-icon>
               <ion-label>
                 ออกจากระบบ
