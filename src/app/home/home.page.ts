@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { SessionService } from '../session/session.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
-  constructor() {}
-
+  member = {};
+  constructor(
+    private session: SessionService,
+    private storage: Storage
+  ) {
+    this.storage.get('member').then((val) => {
+      this.member = val;
+    });
+  }
 }

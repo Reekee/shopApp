@@ -1,5 +1,7 @@
 {
   "name": "shopApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

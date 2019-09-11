@@ -4,6 +4,7 @@ import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SessionService } from './session/session.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private session: SessionService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private storage: Storage
   ) {
     this.initializeApp();
   }
@@ -37,6 +39,12 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      this.storage.get('status').then((val) => {
+        this.session.status = val || false;
+      });
+
+
     });
   }
   async logout() {
@@ -54,6 +62,8 @@ export class AppComponent {
         }, {
           text: 'ตกลง',
           handler: () => {
+            this.storage.remove('status');
+            this.storage.remove('member');
             this.session.status = false;
           }
         }
