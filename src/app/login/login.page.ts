@@ -12,18 +12,29 @@ export class LoginPage implements OnInit {
   password = "1234";
   constructor(
     private router: Router,
-    private session: SessionService
+    private session: SessionService,
   ) { }
   ngOnInit() {
   }
   login() {
-    if (this.username == "admin" && this.password == "1234") {
-      //alert("เข้าสู่ระบบสำเร็จ");
+    /*if (this.username == "admin" && this.password == "1234") {
       this.session.status = true;
       this.router.navigateByUrl('/home');
     } else {
       alert("เข้าสู่ระบบไม่สำเร็จ");
-    }
+    }*/
+    // http://localhost/shopApp/login.php
+    this.session.ajax("http://localhost/shopApp/login.php", {
+      username: this.username,
+      password: this.password
+    }, true).then((res: any) => {
+      if (res.status == true) {
+        this.session.status = true;
+        this.router.navigateByUrl('/home');
+      } else {
+        alert("เข้าสู่ระบบไม่สำเร็จ");
+      }
+    });
   }
   clear() {
     this.username = "";
