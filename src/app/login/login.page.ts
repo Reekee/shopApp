@@ -44,4 +44,7 @@ export class LoginPage implements OnInit {
     this.username = "";
     this.password = "";
   }
+  register() {
+    this.router.navigateByUrl('/register');
+  }
 }

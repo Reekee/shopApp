@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label position="floating">ชื่อ</ion-label>
+    <ion-input [(ngModel)]="member_name"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">นามสกุล</ion-label>
+    <ion-input [(ngModel)]="member_lname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>เพศ</ion-label>
+    <ion-select okText="ตกลง" cancelText="ยกเลิก" [(ngModel)]="gender_id">
+      <ion-select-option value="1">ชาย</ion-select-option>
+      <ion-select-option value="2">หญิง</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">ชื่อผู้ใช้</ion-label>
+    <ion-input [(ngModel)]="username"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">รหัสผ่าน</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">ยืนยันรหัสผ่าน</ion-label>
+    <ion-input type="password" [(ngModel)]="password2"></ion-input>
+  </ion-item>
+  <ion-grid>
+    <ion-row id="btn-login">
+      <ion-col>
+        <ion-button expand="block" (click)="login()">ลงทะเบียน</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="light" expand="block" (click)="clear()">ล้างข้อมูล</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
