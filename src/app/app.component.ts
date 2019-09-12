@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Platform, AlertController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SessionService } from './session/session.service';
-import { Storage } from '@ionic/storage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -24,8 +24,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private session: SessionService,
-    public alertController: AlertController,
-    private storage: Storage
+    private router: Router,
   ) {
     this.initializeApp();
   }
@@ -35,19 +34,19 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      this.storage.get('status').then((val) => {
+      this.session.getStorage('status').then((val) => {
         this.session.status = val || false;
       });
-
 
     });
   }
   async logout() {
     this.session.showConfirm("คุณแน่ใจต้องการออกจากระบบใช่หรือไม่ ?").then(rs => {
       if (rs) {
-        this.storage.remove('status');
-        this.storage.remove('member');
+        this.session.removeStorage("status");
+        this.session.removeStorage("member");
         this.session.status = false;
+        this.router.navigateByUrl('/tabs/home');
       }
     });
   }

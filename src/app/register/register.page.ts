@@ -40,6 +40,9 @@ export class RegisterPage implements OnInit {
     }, true).then((res: any) => {
       if (res.status == true) {
         this.session.showAlert(res.message).then(rs => {
+          this.session.setStorage('status', true);
+          this.session.setStorage('member', res.member);
+          this.session.status = true;
           this.router.navigateByUrl('/tabs/home');
         });
       } else {

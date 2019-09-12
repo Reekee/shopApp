@@ -6,7 +6,31 @@
     <ion-title>โปรไฟล์</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-grid>
+    <ion-row class="row-item">
+      <ion-col>
+        ชื่อ
+      </ion-col>
+      <ion-col>
+        {{ member.member_name }} {{ member.member_lname }}
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-item">
+      <ion-col>
+        เพศ
+      </ion-col>
+      <ion-col>
+        {{ member.gender_name }}
+      </ion-col>
+    </ion-row>
+    <ion-row class="row-item">
+      <ion-col>
+        ชื่อผู้ใช้งาน
+      </ion-col>
+      <ion-col>
+        {{ member.username }}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
