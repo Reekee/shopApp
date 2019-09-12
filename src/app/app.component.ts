@@ -14,14 +14,9 @@ import { Storage } from '@ionic/storage';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
+      title: 'หน้าแรก',
+      url: '/tabs/home',
       icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
     }
   ];
   constructor(
@@ -48,29 +43,13 @@ export class AppComponent {
     });
   }
   async logout() {
-    const alert = await this.alertController.create({
-      header: 'คำยืนยัน!',
-      message: 'คุณแน่ใจต้องการออกจากระบบใช่หรือไม่ ?',
-      buttons: [
-        {
-          text: 'ยกเลิก',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: (blah) => {
-
-          }
-        }, {
-          text: 'ตกลง',
-          handler: () => {
-            this.storage.remove('status');
-            this.storage.remove('member');
-            this.session.status = false;
-          }
-        }
-      ]
+    this.session.showConfirm("คุณแน่ใจต้องการออกจากระบบใช่หรือไม่ ?").then(rs => {
+      if (rs) {
+        this.storage.remove('status');
+        this.storage.remove('member');
+        this.session.status = false;
+      }
     });
-
-    await alert.present();
   }
 }
 

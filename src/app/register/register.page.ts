@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SessionService } from '../session/session.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +14,10 @@ export class RegisterPage implements OnInit {
   username = "";
   password = "";
   password2 = "";
-  constructor() { }
+  constructor(
+    private router: Router,
+    private session: SessionService,
+  ) { }
 
   ngOnInit() {
   }
@@ -23,5 +28,25 @@ export class RegisterPage implements OnInit {
     this.username = "";
     this.password = "";
     this.password2 = "";
+  }
+  register() {
+    this.session.ajax(this.session.api + "register.php", {
+      member_name: this.member_name,
+      member_lname: this.member_lname,
+      gender_id: this.gender_id,
+      username: this.username,
+      password: this.password,
+      password2: this.password2
+    }, true).then((res: any) => {
+      if (res.status == true) {
+        this.session.showAlert(res.message).then(rs => {
+          this.router.navigateByUrl('/tabs/home');
+        });
+      } else {
+        this.session.showAlert(res.message);
+      }
+    }).catch(error => {
+      this.session.showAlert(error); //alert(error);
+    });
   }
 }
