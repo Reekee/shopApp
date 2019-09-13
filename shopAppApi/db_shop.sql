@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2019-09-11 15:18:28
+Date: 2019-09-13 14:00:08
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,7 +49,11 @@ CREATE TABLE `member` (
 -- Records of member
 -- ----------------------------
 INSERT INTO `member` VALUES ('1', 'Jorn', 'Smitch', '1', 'AA', 'AA');
-INSERT INTO `member` VALUES ('2', 'BB', 'BB', '2', 'BB', 'BB');
+INSERT INTO `member` VALUES ('2', 'สมชาย', 'สมใจ', '2', 'BB', 'BB');
+INSERT INTO `member` VALUES ('3', 'CC', 'CC', '1', 'CC', 'CC');
+INSERT INTO `member` VALUES ('4', 'EE', 'EE', '2', 'EE', 'EE');
+INSERT INTO `member` VALUES ('5', 'www', 'www', '2', 'www', 'www');
+INSERT INTO `member` VALUES ('6', 'qqq', 'qqq', '2', 'qqq', 'qqq');
 
 -- ----------------------------
 -- Table structure for `product`
@@ -67,4 +71,7 @@ CREATE TABLE `product` (
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('1', 'ยาสีฟัน', 'คุณสมบัติของยาสีฟัน ขจัดคราบ ฟันเหลือง ทำให้ฟันขาวได้ภายใน 7 วัน', '80', '');
+INSERT INTO `product` VALUES ('1', 'ยาสีฟัน', 'คุณสมบัติของยาสีฟัน ขจัดคราบ ฟันเหลือง ทำให้ฟันขาวได้ภายใน 7 วัน', '80', 'https://secure.ap-tescoassets.com/assets/TH/569/8850006232569/ShotType1_540x540.jpg');
+INSERT INTO `product` VALUES ('2', 'แปรงสีฟัน', 'ฤฤฤฤ', '50', 'https://www.ningnongmistine.com/media/catalog/product/cache/c687aa7517cf01e65c009f6943c2b1e9/3/8/38010.jpg');
+INSERT INTO `product` VALUES ('3', 'สบู่', 'หดหดหดหดำ', '45', 'https://static.bigc.co.th/media/catalog/product/cache/2/image/497x497/9df78eab33525d08d6e5fb8d27136e95/8/8/8850006534380.jpg');
+INSERT INTO `product` VALUES ('4', 'AAA', 'SSS', '65', 'https://static.bigc.co.th/media/catalog/product/cache/2/image/497x497/9df78eab33525d08d6e5fb8d27136e95/8/8/8850006534380.jpg');
