@@ -18,22 +18,24 @@ export class HomePage {
         private storage: Storage,
         private barcodeScanner: BarcodeScanner
     ) {
-        /*this.storage.get('member').then((val) => {
-            this.member = val;
-            this.loadData();
-        });*/
-        this.loadData();
+
     }
-    loadData() {
+    ionViewWillEnter() {
+        this.storage.get('member').then((val) => {
+            this.member = val;
+            this.loadData(false);
+        });
+    }
+    loadData(isLoading = true) {
         this.session.ajax(this.session.api + "product-get.php", {
-        }, true).then((res: any) => {
+        }, isLoading).then((res: any) => {
             if (res.status == true) {
                 this.product = res.product;
             } else {
-                this.session.showAlert("เข้าสู่ระบบไม่สำเร็จ"); //alert("เข้าสู่ระบบไม่สำเร็จ");
+                if (isLoading) this.session.showAlert(res.message);
             }
         }).catch(error => {
-            this.session.showAlert(error); //alert(error);
+            this.session.showAlert(error);
         });
     }
     addData() {

@@ -13,11 +13,11 @@ export class ProductAddPage implements OnInit {
     product_name = "";
     product_detail = "";
     product_price = "";
-    product_image = "assets/images/default.png";
+    product_image = "";
     constructor(
-        public platform: Platform,
+        private platform: Platform,
         private camera: Camera,
-        public actionSheetController: ActionSheetController,
+        private actionSheetController: ActionSheetController,
         private router: Router,
         private session: SessionService
     ) { }
@@ -32,6 +32,7 @@ export class ProductAddPage implements OnInit {
             product_image: this.product_image
         }, true).then((res: any) => {
             if (res.status == true) {
+                this.product_image = "";
                 this.session.showAlert(res.message).then(rs => {
                     this.router.navigateByUrl('/tabs/home');
                 });
@@ -46,7 +47,7 @@ export class ProductAddPage implements OnInit {
         this.product_name = "";
         this.product_detail = "";
         this.product_price = "";
-        this.product_image = "assets/images/default.png";
+        this.product_image = "";
     }
     async addImage() {
         if (this.platform.is("cordova")) {  // เช็คว่าเป็นโทรศัพไหม
@@ -114,12 +115,18 @@ export class ProductAddPage implements OnInit {
             base64: imageBase64
         }, true).then((res: any) => {
             if (res.status) {
-                this.product_image = this.session.api + "fileUpload/" + res.file;
+                this.product_image = res.file;
             } else {
                 this.session.showAlert(res.message);
             }
         }).catch(error => {
             this.session.showAlert(error);
         });
+    }
+    ionViewWillLeave() {
+        if (this.product_image == "") return;
+        this.session.ajax(this.session.api + 'product-remove-image.php', {
+            name: this.product_image
+        }, false);
     }
 }

@@ -3,13 +3,14 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>product-edit</ion-title>
+        <ion-title>แก้ไขสินค้า</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <img src="{{ product_image }}">
+    <img *ngIf="product_image!=''" [src]="session.api+'fileUpload/'+product_image">
+    <img *ngIf="product_image==''" src="assets/images/default.png">
     <div class="my-button">
-        <ion-button fill="clear" (click)="addImage()">เพิ่มรูปสินค้า</ion-button>
+        <ion-button fill="clear" (click)="addImage()">แก้ไขรูปสินค้า</ion-button>
     </div>
     <ion-item>
         <ion-label position="floating">ชื่อสินค้า</ion-label>
@@ -26,7 +27,7 @@
     <ion-grid>
         <ion-row>
             <ion-col>
-                <ion-button expand="block" (click)="edit()">เพิ่มสินค้า</ion-button>
+                <ion-button expand="block" (click)="edit()" color="warning">แก้ไขสินค้า</ion-button>
             </ion-col>
             <ion-col>
                 <ion-button color="light" expand="block" (click)="clear()">ล้างข้อมูล</ion-button>

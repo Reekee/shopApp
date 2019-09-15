@@ -8,6 +8,7 @@ const routes: Routes = [
     { path: 'product-detail/:product_id', loadChildren: './product-detail/product-detail.module#ProductDetailPageModule' },
     { path: 'product-add', loadChildren: './product-add/product-add.module#ProductAddPageModule' },
     { path: 'product-edit/:product_id', loadChildren: './product-edit/product-edit.module#ProductEditPageModule' },
+    { path: 'set-api', loadChildren: './set-api/set-api.module#SetApiPageModule' },
 ];
 
 @NgModule({

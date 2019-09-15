@@ -3,11 +3,12 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>product-add</ion-title>
+        <ion-title>เพิ่มสินค้าใหม่</ion-title>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <img src="{{ product_image }}">
+    <img *ngIf="product_image!=''" [src]="session.api+'fileUpload/'+product_image">
+    <img *ngIf="product_image==''" src="assets/images/default.png">
     <div class="my-button">
         <ion-button fill="clear" (click)="addImage()">เพิ่มรูปสินค้า</ion-button>
     </div>

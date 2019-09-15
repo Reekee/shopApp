@@ -14,7 +14,8 @@ export class ProductEditPage implements OnInit {
     product_name = "";
     product_detail = "";
     product_price = "";
-    product_image = "assets/images/default.png";
+    product_image = "";
+    edit_image = false;
     constructor(
         public platform: Platform,
         private camera: Camera,
@@ -36,12 +37,20 @@ export class ProductEditPage implements OnInit {
                 this.product_detail = res.product.product_detail;
                 this.product_price = res.product.product_price;
                 this.product_image = res.product.product_image;
+                this.edit_image = false;
             } else {
                 this.session.showAlert(res.message);
             }
         }).catch(error => {
             this.session.showAlert(error); //alert(error);
         });
+    }
+    clear() {
+        this.product_name = "";
+        this.product_detail = "";
+        this.product_price = "";
+        this.product_image = "";
+        this.edit_image = false;
     }
     async addImage() {
         if (this.platform.is("cordova")) {  // เช็คว่าเป็นโทรศัพไหม
@@ -109,7 +118,8 @@ export class ProductEditPage implements OnInit {
             base64: imageBase64
         }, true).then((res: any) => {
             if (res.status) {
-                this.product_image = this.session.api + "fileUpload/" + res.file;
+                this.product_image = res.file;
+                this.edit_image = true;
             } else {
                 this.session.showAlert(res.message);
             }
@@ -125,6 +135,7 @@ export class ProductEditPage implements OnInit {
             product_price: this.product_price,
             product_image: this.product_image
         }, true).then((res: any) => {
+            this.edit_image = false;
             if (res.status == true) {
                 this.session.showAlert(res.message).then(rs => {
                     this.router.navigateByUrl('/tabs/home');
@@ -135,5 +146,11 @@ export class ProductEditPage implements OnInit {
         }).catch(error => {
             this.session.showAlert(error); //alert(error);
         });
+    }
+    ionViewWillLeave() {
+        if (this.edit_image == false) return;
+        this.session.ajax(this.session.api + 'product-remove-image.php', {
+            name: this.product_image
+        }, false);
     }
 }

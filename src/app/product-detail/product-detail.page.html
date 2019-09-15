@@ -3,7 +3,7 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>
         </ion-buttons>
-        <ion-title>product-detail</ion-title>
+        <ion-title>รายละเอียดสินค้า</ion-title>
         <ion-buttons slot="end">
             <ion-button (click)="edit()">
                 <ion-icon slot="icon-only" name="create"></ion-icon>
@@ -15,7 +15,9 @@
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <img src="{{ product.product_image }}">
+    <img *ngIf="!product['no-image']" [src]="session.api+'fileUpload/'+product.product_image"
+        (error)="session.imageError(product, 'no-image')">
+    <img *ngIf="product['no-image']" src="assets/images/default.png">
     <h1>{{ product.product_name }}</h1>
     <p>{{ product.product_detail }}</p>
     <p>ราคา {{ product.product_price }} บาท5</p>

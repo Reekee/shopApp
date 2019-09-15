@@ -1,12 +1,30 @@
+.product-wrapper {
+    background-color: #e1e1e1;
+    min-height: 100%;
+}
+
+.product-item {
+    background-color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+}
+
 .product-image {
-  height: 150px;
-  border: 2px solid #e1e1e1;
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    background-color: initial;
+    padding: 20px;
 }
 
 .product-name {
-  text-align: center;
+    text-align: center;
+    font-weight: bold;
 }
 
 .product-price {
-  text-align: center;
+    text-align: center;
+    padding: 10px 0px 10px;
 }
