@@ -1,36 +1,35 @@
 <ion-header>
-  <ion-toolbar color="success">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>เข้าสู่ระบบ</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>เข้าสู่ระบบ</ion-title>
+    </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <div class="frm-login">
-    <ion-item>
-      <ion-label position="floating">ชื่อผู้ใช้งาน</ion-label>
-      <ion-input [(ngModel)]="username"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">รหัสผ่าน</ion-label>
-      <ion-input [(ngModel)]="password"></ion-input>
-    </ion-item>
-    <ion-grid>
-      <ion-row id="btn-login">
-        <ion-col>
-          <ion-button expand="block" (click)="login()">เข้าสู่ระบบ</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button color="light" expand="block" (click)="clear()">ล้างข้อมูล</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button color="light" expand="block" (click)="register()">สมัครสมาชิก</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+    <div class="frm-login">
+        <ion-item>
+            <ion-label position="floating">ชื่อผู้ใช้งาน</ion-label>
+            <ion-input [(ngModel)]="username"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">รหัสผ่าน</ion-label>
+            <ion-input [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-grid>
+            <ion-row id="btn-login">
+                <ion-col>
+                    <ion-button expand="block" (click)="login()">เข้าสู่ระบบ</ion-button>
+                </ion-col>
+                <ion-col>
+                    <ion-button color="light" expand="block" (click)="clear()">ล้างข้อมูล</ion-button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-button color="light" expand="block" (click)="register()">สมัครสมาชิก</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
 </ion-content>

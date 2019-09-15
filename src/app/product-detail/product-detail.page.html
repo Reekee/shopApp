@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>product-detail</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <img src="{{ product.product_image }}">
+    <h1>{{ product.product_name }}</h1>
+    <p>{{ product.product_detail }}</p>
+    <p>ราคา {{ product.product_price }} บาท5</p>
+</ion-content>
