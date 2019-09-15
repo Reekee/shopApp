@@ -35,4 +35,28 @@ export class ProductDetailPage implements OnInit {
             this.session.showAlert(error); //alert(error);
         });
     }
+    edit() {
+        this.router.navigateByUrl('/product-edit/' + this.product_id);
+    }
+    del() {
+        this.session.showConfirm("Confirm ?").then(rs => {
+            if (rs == true) {
+                this.session.ajax(this.session.api + "product-del.php", {
+                    product_id: this.product_id
+                }, true).then((res: any) => {
+                    if (res.status == true) {
+                        this.session.showAlert(res.message).then(rs => {
+                            this.router.navigateByUrl('/tabs/home');
+                        });
+                    } else {
+                        this.session.showAlert(res.message).then(rs => {
+                            this.router.navigateByUrl('/tabs/home');
+                        });
+                    }
+                }).catch(error => {
+                    this.session.showAlert(error); //alert(error);
+                });
+            }
+        });
+    }
 }

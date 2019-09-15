@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
 })
 export class SessionService {
     public status = false;  // ตัวแปรควบคุมการล็อกอิน  // true : ล็อกอินแล้ว , false: ยังไม่ล็อกอิน
-    public api = "http://172.20.10.5/shopApp/"; // ตัวแปรสำหรับชี้ที่ตั้งของ Api
+    public api = "http://10.108.35.127/shopApp/"; // ตัวแปรสำหรับชี้ที่ตั้งของ Api
     public apiTimeout: number = 5000;
     constructor(
         private http: HttpClient,

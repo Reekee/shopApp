@@ -27,7 +27,7 @@ export class LoginPage implements OnInit {
                 this.session.status = true;
                 this.router.navigateByUrl('/tabs/home');
             } else {
-                this.session.showAlert("เข้าสู่ระบบไม่สำเร็จ"); //alert("เข้าสู่ระบบไม่สำเร็จ");
+                this.session.showAlert(res.message);
             }
         }).catch(error => {
             this.session.showAlert(error); //alert(error);

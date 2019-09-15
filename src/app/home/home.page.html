@@ -7,17 +7,22 @@
             หน้าแรก
         </ion-title>
         <ion-buttons slot="end">
+            <ion-button (click)="scan()">
+                <ion-icon slot="icon-only" name="barcode"></ion-icon>
+            </ion-button>
             <ion-button (click)="loadData()">
                 <ion-icon slot="icon-only" name="sync"></ion-icon>
+            </ion-button>
+            <ion-button (click)="addData()">
+                <ion-icon slot="icon-only" name="add"></ion-icon>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content>
-    <ion-button (click)="scan()">สแกน 555</ion-button>
     <ion-grid>
         <ion-row>
-            <ion-col size="6" *ngFor="let item of product">
+            <ion-col size="6" *ngFor="let item of product" (click)="viewDetail(item.product_id)">
                 <img class="product-image" src="{{ item.product_image }}">
                 <div class="product-name">{{ item.product_name }}</div>
                 <div class="product-price">ราคา {{ item.product_price }} บาท</div>

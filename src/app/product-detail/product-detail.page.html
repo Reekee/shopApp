@@ -4,6 +4,14 @@
             <ion-back-button></ion-back-button>
         </ion-buttons>
         <ion-title>product-detail</ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="edit()">
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-button>
+            <ion-button (click)="del()">
+                <ion-icon slot="icon-only" name="trash"></ion-icon>
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
 <ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-toolbar color="success">
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>product-add</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <img src="{{ product_image }}">
+    <div class="my-button">
+        <ion-button fill="clear" (click)="addImage()">เพิ่มรูปสินค้า</ion-button>
+    </div>
+    <ion-item>
+        <ion-label position="floating">ชื่อสินค้า</ion-label>
+        <ion-input [(ngModel)]="product_name"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">รายละเอียดสินค้า</ion-label>
+        <ion-textarea rows="5" [(ngModel)]="product_detail"></ion-textarea>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">ราคาสินค้า</ion-label>
+        <ion-input [(ngModel)]="product_price"></ion-input>
+    </ion-item>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" (click)="add()">เพิ่มสินค้า</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button color="light" expand="block" (click)="clear()">ล้างข้อมูล</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

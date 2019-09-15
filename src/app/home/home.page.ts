@@ -18,10 +18,11 @@ export class HomePage {
         private storage: Storage,
         private barcodeScanner: BarcodeScanner
     ) {
-        this.storage.get('member').then((val) => {
+        /*this.storage.get('member').then((val) => {
             this.member = val;
             this.loadData();
-        });
+        });*/
+        this.loadData();
     }
     loadData() {
         this.session.ajax(this.session.api + "product-get.php", {
@@ -35,6 +36,9 @@ export class HomePage {
             this.session.showAlert(error); //alert(error);
         });
     }
+    addData() {
+        this.router.navigateByUrl('/product-add');
+    }
     scan() {
         this.barcodeScanner.scan().then(barcodeData => {
             alert(barcodeData.text);
@@ -42,5 +46,8 @@ export class HomePage {
         }).catch(err => {
             this.session.showToast(err);
         });
+    }
+    viewDetail(product_id) {
+        this.router.navigateByUrl('/product-detail/' + product_id);
     }
 }
